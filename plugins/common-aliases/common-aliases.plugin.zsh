@@ -1,8 +1,56 @@
 # Advanced Aliases.
 # Use with caution
 #
+alias 0='cd -0'
+alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
+alias view='vim -R --noplugin'
+alias vi='vim --noplugin'
+alias su='sudo -v'
+alias _='sudo '
+alias b='$BROWSER'
+alias e='${VISUAL:-$EDITOR}'
+
+if [[ $OSTYPE == darwin* ]]; then
+  alias o='open'
+  alias locate='mdfind'
+elif [[ $OSTYPE == cygwin* ]]; then
+  alias o='cygstart'
+  alias pbcopy='tee > /dev/clipboard'
+  alias pbpaste='cat /dev/clipboard'
+else
+  alias o='xdg-open'
+  if type -t xclip > /dev/null; then
+    alias pbcopy='xclip -selection clipboard -in'
+    alias pbpaste='xclip -selection clipboard -out'
+  elif type -t xsel > /dev/null; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+  fi
+fi
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+
+for cmd in start stop restart reboot reload halt; do
+  alias $cmd=">&2 echo Call sudo $cmd."
+done
+
+alias ack='nocorrect ack'
+alias cd='nocorrect cd'
+alias gcc='nocorrect gcc'
+alias ln='nocorrect ln'
+alias rm='nocorrect rm'
+alias bower='noglob bower'
+alias fc='noglob fc'
+alias find='noglob find'
+alias ftp='noglob ftp'
+alias history='noglob history'
+alias locate='noglob locate'
+alias rsync='noglob rsync'
+alias scp='noglob scp'
+alias sftp='noglob sftp'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
+alias dir='ls -F'
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
