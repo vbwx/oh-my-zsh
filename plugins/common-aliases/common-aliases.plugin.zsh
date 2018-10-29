@@ -61,7 +61,7 @@ alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
-alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
+alias zshrc='${=VISUAL:-EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
 
 alias grep='nocorrect grep --color'
 alias sgrep='nocorrect grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
