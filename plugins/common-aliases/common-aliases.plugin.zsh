@@ -1,7 +1,6 @@
 # Advanced Aliases.
 # Use with caution
 #
-alias 0='cd -0'
 alias add='awk "{s+=\$1} END {printf \"%.2f\n\", s}"'
 alias view='vim -R --noplugin'
 alias vi='vim --noplugin'
@@ -50,7 +49,6 @@ alias scp='noglob scp'
 alias sftp='noglob sftp'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias dir='ls -F'
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
@@ -132,6 +130,7 @@ if is-at-least 4.2.0; then
   alias -s tar="tar tf"
   alias -s ace="unace l"
   alias -s gz="gzip -l"
+  alias -s tgz="gzip -l"
   alias -s bz2="basename -s .bz2"
   alias -s Z="basename -s .Z"
 fi
